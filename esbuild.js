@@ -75,8 +75,8 @@ async function main() {
     contexts.push(cliCtx);
   }
 
-  // Build the LSP server (all targets except cli)
-  if (buildTarget !== "cli") {
+  // Build the LSP server (all targets except cli and eslint)
+  if (buildTarget !== "cli" && buildTarget !== "eslint") {
     const serverCtx = await esbuild.context({
       ...sharedOptions,
       entryPoints: [path.join(rootDir, "packages/server/src/server.ts")],
@@ -88,6 +88,18 @@ async function main() {
       external: [],
     });
     contexts.push(serverCtx);
+  }
+
+  // Build ESLint plugin
+  if (buildTarget === "eslint") {
+    const eslintCtx = await esbuild.context({
+      ...sharedOptions,
+      entryPoints: [path.join(rootDir, "packages/eslint-plugin/src/index.ts")],
+      outfile: path.join(rootDir, "packages/eslint-plugin/out/index.cjs"),
+      format: "cjs",
+      external: ["eslint", "@babel/core", "@babel/parser", "babel-plugin-react-compiler"],
+    });
+    contexts.push(eslintCtx);
   }
 
   // Build VS Code client extension only for vscode target

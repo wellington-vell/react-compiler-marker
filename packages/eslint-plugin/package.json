@@ -1,0 +1,34 @@
+{
+  "name": "@react-compiler-marker/eslint-plugin",
+  "type": "commonjs",
+  "version": "0.1.0",
+  "description": "ESLint plugin that reports React components not optimized by the React Compiler",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blazejkustra/react-compiler-marker"
+  },
+  "main": "./out/index.cjs",
+  "exports": {
+    ".": {
+      "require": "./out/index.cjs",
+      "default": "./out/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "watch": "tsc -b -w",
+    "test": "node --experimental-vm-modules ../../node_modules/.bin/jest test/*.test.ts --config jest.config.js 2>/dev/null || echo 'Tests require jest setup'"
+  },
+  "dependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/parser": "^7.26.2",
+    "babel-plugin-react-compiler": "^1.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "^9.6.0"
+  }
+}

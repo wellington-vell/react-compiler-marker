@@ -3,6 +3,7 @@
   "references": [
     { "path": "./packages/server" },
     { "path": "./packages/vscode-client" },
-    { "path": "./packages/cli" }
+    { "path": "./packages/cli" },
+    { "path": "./packages/eslint-plugin" }
   ]
 }

@@ -12,7 +12,8 @@
     "packages/server",
     "packages/cli",
     "packages/nvim-client",
-    "packages/vscode-client"
+    "packages/vscode-client",
+    "packages/eslint-plugin"
   ],
   "scripts": {
     "typecheck": "tsc -b",
